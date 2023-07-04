@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Чат</title>
+  <style>
+    body {
+      background-color: #f2f2f2;
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
+      background-color: #ffffff;
+      border-radius: 5px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+      padding: 20px;
+    }
+
+    h1 {
+      color: #333333;
+      text-align: center;
+    }
+
+    .chat-box {
+      height: 300px;
+      overflow-y: scroll;
+      border: 1px solid #cccccc;
+      border-radius: 3px;
+      padding: 10px;
+      margin-bottom: 10px;
+    }
+
+    .message {
+      margin-bottom: 10px;
+    }
+
+    .message span {
+      font-weight: bold;
+    }
+
+    input[type="text"] {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 10px;
+      border: 1px solid #cccccc;
+      border-radius: 3px;
+      font-size: 14px;
+    }
+
+    button {
+      padding: 10px 20px;
+      background-color: #4caf50;
+      color: #ffffff;
+      border: none;
+      border-radius: 3px;
+      font-size: 14px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #45a049;
+    }
+  </style>
+  <script>
+    function sendMessage() {
+      var name = document.getElementById("name").value;
+      var message = document.getElementById("message").value;
+
+      if (name && message) {
+        var chatMessage = name + ": " + message;
+        console.log(chatMessage);
+
+        var chatBox = document.getElementById("chat-box");
+        var messageElement = document.createElement("div");
+        messageElement.className = "message";
+        messageElement.innerHTML =
+          "<span>" + name + ":</span> " + message;
+        chatBox.appendChild(messageElement);
+
+        document.getElementById("message").value = "";
+      }
+    }
+  </script>
+</head>
+
+<body>
+  <div class="container">
+    <h1>Чат</h1>
+    <div class="chat-box" id="chat-box"></div>
+    <input type="text" id="name" placeholder="Введите ваше имя" />
+    <input type="text" id="message" placeholder="Введите сообщение" />
+    <button onclick="sendMessage()">Отправить</button>
+  </div>
+</body>
+
+</html>

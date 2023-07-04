@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Chat fo GB</title>
+    <style>
+        body {
+            background-color: #222;
+            color: #fff;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .chat-button {
+            display: none;
+            padding: 10px 20px;
+            background-color: #555;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+
+        .chat-button:hover {
+            background-color: #777;
+        }
+
+        .chat-container {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #333;
+            border-radius: 4px;
+            display: none;
+        }
+
+        .input-group {
+            margin-bottom: 10px;
+        }
+
+        .input-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .input-group input[type="text"],
+        .input-group textarea {
+            width: 100%;
+            padding: 8px;
+            font-size: 14px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+        }
+
+        .input-group button {
+            padding: 8px 16px;
+            background-color: #555;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .input-group button:hover {
+            background-color: #777;
+        }
+
+        .message {
+            background-color: #444;
+            color: #fff;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 4px;
+        }
+
+        footer {
+            background-color: #111;
+            padding: 20px;
+            text-align: center;
+            color: #fff;
+            position: fixed;
+            left: 0;
+            right: 0;
+            bottom: 0;
+        }
+
+        .footer-menu {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            margin-bottom: 10px;
+        }
+
+        .footer-menu li {
+            margin: 0 10px;
+        }
+
+        .footer-menu li a {
+            color: #fff;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-menu li a:hover {
+            color: #999;
+        }
+
+        .geometric-pattern {
+            background: url('https://modnica.club/uploads/posts/2021-11/1636064999_26-modnica-club-p-minimalizm-geometricheskie-figuri-30.png') repeat;
+            background-size: cover;
+        }
+
+        .background-image {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: -1;
+            opacity: 0.6;
+            pointer-events: none;
+            background: url('https://gamerwall.pro/uploads/posts/2021-11/1637915353_1-gamerwall-pro-p-oboi-na-rabochii-stol-minimalizm-geometriy-1.jpg') center center no-repeat;
+            background-size: cover;
+        }
+    </style>
+    <script>
+        function showGreeting() {
+            document.getElementById("greeting-container").style.display = "block";
+        }
+
+        function showChat() {
+            document.getElementById("chat-container").style.display = "block";
+        }
+
+        function startChat() {
+            var name = document.getElementById("name-input").value;
+            document.getElementById("greeting-container").style.display = "none";
+            document.getElementById("chat-container").style.display = "block";
+            document.getElementById("chat-name").value = name;
+        }
+
+        function sendMessage() {
+            var name = document.getElementById("chat-name").value;
+            var message = document.getElementById("chat-message").value;
+
+            var messageContainer = document.createElement("div");
+            messageContainer.classList.add("message");
+
+            var nameElement = document.createElement("strong");
+            nameElement.textContent = name + ":";
+
+            var messageElement = document.createElement("span");
+            messageElement.textContent = message;
+
+            messageContainer.appendChild(nameElement);
+            messageContainer.appendChild(messageElement);
+
+            document.getElementById("chat-messages").appendChild(messageContainer);
+
+            document.getElementById("chat-message").value = "";
+        }
+    </script>
+</head>
+
+<body onload="showGreeting()">
+    <div class="background-image"></div>
+    <div class="geometric-pattern">
+        <div id="greeting-container" class="container">
+            <h1>Добро пожаловать!</h1>
+            <p>Введите ваше имя:</p>
+            <input type="text" id="name-input">
+            <button onclick="startChat()">Продолжить</button>
+        </div>
+
+        <div id="chat-container" class="chat-container">
+            <div class="input-group">
+                <label for="chat-name">Ваше имя:</label>
+                <input type="text" id="chat-name">
+            </div>
+            <div class="input-group">
+                <label for="chat-message">Сообщение:</label>
+                <textarea id="chat-message"></textarea>
+            </div>
+            <button onclick="sendMessage()">Отправить</button>
+            <div id="chat-messages"></div>
+        </div>
+
+        <footer>
+            <ul class="footer-menu">
+                <li><a href="#">Главная</a></li>
+                <li><a href="#">О нас</a></li>
+                <li><a href="#">Услуги</a></li>
+                <li><a href="#">Контакты</a></li>
+            </ul>
+            &copy; 2023 Chat fo GeekBrains). Все права защищены.
+        </footer>
+    </div>
+</body>
+
+</html>
